@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diocese of St. Aurelius</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            burgundy: '#6B1E2B',
+            burgundyDark: '#4D121D',
+            gold: '#C9A227',
+            midnight: '#1D3557',
+            ivory: '#F8F5F0',
+            stone: '#D9D4CC',
+            cream: '#FFFDF8',
+            purple: '#5B3A70',
+            forest: '#355E3B'
+          },
+          fontFamily: {
+            heading: ['Cinzel', 'serif'],
+            display: ['Cormorant Garamond', 'serif'],
+            body: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            sacred: '0 18px 60px rgba(29,53,87,.18)',
+            soft: '0 10px 30px rgba(29,53,87,.10)'
+          },
+          backgroundImage: {
+            parchment: 'radial-gradient(circle at 20% 10%, rgba(201,162,39,.09), transparent 28%), radial-gradient(circle at 80% 20%, rgba(107,30,43,.07), transparent 30%), linear-gradient(135deg, #FFFDF8 0%, #F8F5F0 58%, #EFE8DC 100%)',
+            nave: 'linear-gradient(90deg, rgba(7,16,29,.88) 0%, rgba(14,23,39,.72) 32%, rgba(25,18,14,.28) 62%, rgba(9,13,20,.58) 100%), url(https://images.unsplash.com/photo-1548625361-58a9b86aa83b?auto=format&fit=crop&w=2200&q=85)',
+            cathedral: 'linear-gradient(90deg, rgba(6,13,23,.82), rgba(107,30,43,.38)), url(https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=80)',
+            stained: 'linear-gradient(135deg, rgba(107,30,43,.72), rgba(29,53,87,.72)), url(https://images.unsplash.com/photo-1548625361-58a9b86aa83b?auto=format&fit=crop&w=1200&q=80)',
+            mass: 'linear-gradient(0deg, rgba(5,10,18,.58), rgba(5,10,18,.08)), url(https://images.unsplash.com/photo-1514896856000-91cb6de818e0?auto=format&fit=crop&w=1400&q=80)',
+            giving: 'linear-gradient(90deg, rgba(107,30,43,.97), rgba(107,30,43,.88)), url(https://images.unsplash.com/photo-1609609830354-d44d8a5bb017?auto=format&fit=crop&w=1600&q=80)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #F8F5F0; }
+    .gold-rule { background: linear-gradient(90deg, transparent, #C9A227, transparent); }
+    .glass { backdrop-filter: blur(14px); background: rgba(10, 22, 37, .82); }
+    .crest-glow { filter: drop-shadow(0 4px 10px rgba(201,162,39,.35)); }
+    .card-hover { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .card-hover:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(29,53,87,.14); border-color: rgba(201,162,39,.55); }
+    .stained-overlay:before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 12% 20%, rgba(201,162,39,.12), transparent 18%),
+        radial-gradient(circle at 88% 10%, rgba(255,253,248,.12), transparent 20%),
+        linear-gradient(120deg, transparent 0 44%, rgba(255,255,255,.06) 45% 46%, transparent 47% 100%);
+      mix-blend-mode: screen;
+    }
+  </style>
+</head>
+
+<body class="font-body text-midnight antialiased">
+  <!-- TOP NAV -->
+  <header class="fixed top-0 z-50 w-full border-b border-gold/20 glass">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+      <a href="#" class="flex items-center gap-3">
+        <div class="crest-glow grid h-14 w-14 place-items-center rounded-full border border-gold/50 bg-burgundy text-gold shadow-soft">
+          <svg viewBox="0 0 48 48" class="h-9 w-9" fill="none" aria-hidden="true">
+            <path d="M24 4l15 6v12c0 10.5-6.7 18.4-15 22C15.7 40.4 9 32.5 9 22V10l15-6z" fill="#6B1E2B" stroke="#C9A227" stroke-width="2"/>
+            <path d="M24 10v27M16 18h16" stroke="#C9A227" stroke-width="3" stroke-linecap="round"/>
+            <path d="M14 28c4-2 7-2 10 0 3-2 6-2 10 0" stroke="#F8F5F0" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="leading-none text-cream">
+          <p class="font-heading text-[11px] uppercase tracking-[.22em] text-gold/90">Diocese of</p>
+          <p class="font-heading text-2xl tracking-wide">St. Aurelius</p>
+        </div>
+      </a>
+
+      <nav class="hidden items-center gap-8 text-[13px] font-medium text-cream/90 lg:flex">
+        <a class="border-b-2 border-gold pb-2 text-gold" href="#">Home</a>
+        <a class="hover:text-gold" href="#">About</a>
+        <a class="hover:text-gold" href="#">Bishop</a>
+        <a class="hover:text-gold" href="#">Parishes</a>
+        <a class="hover:text-gold" href="#">Clergy</a>
+        <a class="hover:text-gold" href="#">Ministries ▾</a>
+        <a class="hover:text-gold" href="#">News</a>
+        <a class="hover:text-gold" href="#">Events</a>
+        <a class="hover:text-gold" href="#">Contact</a>
+      </nav>
+
+      <div class="hidden items-center gap-4 lg:flex">
+        <button class="grid h-10 w-10 place-items-center text-cream hover:text-gold" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <a href="#" class="rounded border border-gold/40 bg-burgundy px-5 py-3 text-[13px] font-semibold text-cream shadow-soft hover:bg-burgundyDark">⌾ Watch Mass Live</a>
+        <a href="#" class="rounded bg-gold px-5 py-3 text-[13px] font-bold text-[#261A0A] shadow-soft hover:bg-[#d9b64b]">♡ Donate</a>
+      </div>
+
+      <button class="lg:hidden text-cream" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative min-h-[620px] bg-nave bg-cover bg-center pt-20 stained-overlay">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
+    <div class="relative mx-auto flex min-h-[540px] max-w-7xl items-center px-6 lg:px-8">
+      <div class="max-w-2xl pt-10 text-cream">
+        <h1 class="font-display text-6xl font-semibold leading-[.92] tracking-tight drop-shadow-xl md:text-7xl lg:text-8xl">
+          Walking Together<br />in Faith, Hope,<br />and Service
+        </h1>
+        <p class="mt-6 max-w-md text-lg leading-8 text-cream/90">
+          United in Christ to proclaim the Gospel, celebrate the sacraments, and serve our communities with love.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="#" class="rounded bg-burgundy px-8 py-4 text-sm font-semibold text-cream shadow-sacred hover:bg-burgundyDark">⌖ Find a Parish</a>
+          <a href="#" class="rounded border border-gold/45 bg-black/30 px-8 py-4 text-sm font-semibold text-cream backdrop-blur hover:border-gold">⌾ Watch Mass Live</a>
+          <a href="#" class="rounded bg-gold px-8 py-4 text-sm font-bold text-[#2B1B09] shadow-sacred hover:bg-[#d9b64b]">♡ Donate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="bg-parchment">
+    <!-- BISHOP + QUICK ACCESS -->
+    <section class="border-b border-stone/80 bg-cream/85">
+      <div class="mx-auto grid max-w-7xl gap-10 px-6 py-10 lg:grid-cols-[1fr_1.1fr] lg:px-8">
+        <div class="grid gap-8 md:grid-cols-[180px_1fr]">
+          <div class="h-56 rounded-md border border-stone bg-stained bg-cover bg-center shadow-soft"></div>
+          <div class="flex flex-col justify-center">
+            <p class="font-heading text-sm font-semibold uppercase tracking-[.18em] text-gold">A Welcome From</p>
+            <h2 class="mt-1 font-display text-4xl font-semibold text-midnight">Bishop Michael Evans</h2>
+            <p class="mt-4 max-w-lg text-sm leading-7 text-midnight/75">
+              As your bishop, I welcome you with a heart full of gratitude and hope. Together, let us grow in holiness, serve the poor, and build up the Kingdom of God in our midst.
+            </p>
+            <p class="mt-5 font-display text-3xl italic text-midnight/80">+ Michael Evans</p>
+            <div class="mt-4 flex items-center justify-between gap-4">
+              <p class="text-xs font-medium text-midnight/70">Bishop of St. Aurelius</p>
+              <a href="#" class="rounded bg-burgundy px-6 py-3 text-xs font-semibold text-cream hover:bg-burgundyDark">Read More →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-l border-stone/70 pl-0 lg:pl-10">
+          <div class="mb-5 flex items-center gap-4">
+            <h3 class="font-heading text-2xl font-semibold text-burgundy">Quick Access</h3>
+            <div class="gold-rule h-px flex-1"></div>
+          </div>
+          <div class="grid grid-cols-2 gap-3 md:grid-cols-4">
+            <a class="card-hover group rounded border border-stone/80 bg-cream p-6 text-center" href="#">
+              <div class="mx-auto mb-4 grid h-10 w-10 place-items-center text-gold"><span class="text-4xl">♜</span></div>
+              <p class="text-sm font-semibold">Mass Times</p>
+            </a>
+            <a class="card-hover rounded border border-stone/80 bg-cream p-6 text-center" href="#"><div class="mb-4 text-4xl text-gold">⛪</div><p class="text-sm font-semibold">Parish Directory</p></a>
+            <a class="card-hover rounded border border-stone/80 bg-cream p-6 text-center" href="#"><div class="mb-4 text-4xl text-gold">✝</div><p class="text-sm font-semibold">Sacraments</p></a>
+            <a class="card-hover rounded border border-stone/80 bg-cream p-6 text-center" href="#"><div class="mb-4 text-4xl text-gold">♟</div><p class="text-sm font-semibold">Vocations</p></a>
+            <a class="card-hover rounded border border-stone/80 bg-cream p-6 text-center" href="#"><div class="mb-4 text-4xl text-gold">▰</div><p class="text-sm font-semibold">Schools</p></a>
+            <a class="card-hover rounded border border-stone/80 bg-cream p-6 text-center" href="#"><div class="mb-4 text-4xl text-gold">▣</div><p class="text-sm font-semibold">Events</p></a>
+            <a class="card-hover rounded border border-stone/80 bg-cream p-6 text-center" href="#"><div class="mb-4 text-4xl text-gold">▶</div><p class="text-sm font-semibold">Livestream</p></a>
+            <a class="card-hover rounded border border-stone/80 bg-cream p-6 text-center" href="#"><div class="mb-4 text-4xl text-gold">♕</div><p class="text-sm font-semibold">Giving</p></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-8">
+      <div class="mb-4 flex items-center justify-between">
+        <h2 class="font-heading text-2xl font-semibold text-burgundy">Latest News & Announcements</h2>
+        <a href="#" class="text-xs font-semibold text-burgundy hover:text-gold">View all News →</a>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <article class="card-hover overflow-hidden rounded-md border border-stone/80 bg-cream shadow-soft">
+          <div class="h-36 bg-stained bg-cover bg-center"></div>
+          <div class="p-5">
+            <p class="font-heading text-[10px] font-bold uppercase tracking-wider text-burgundy">Diocesan News</p>
+            <h3 class="mt-2 font-display text-2xl font-semibold leading-6">A Call to Renew Our Faith</h3>
+            <p class="mt-2 text-sm leading-6 text-midnight/70">A pastoral letter from Bishop Michael Evans on renewal and hope.</p>
+            <p class="mt-7 text-xs text-midnight/60">▣ May 12, 2025</p>
+          </div>
+        </article>
+
+        <article class="card-hover overflow-hidden rounded-md border border-stone/80 bg-cream shadow-soft">
+          <div class="h-36 bg-[linear-gradient(135deg,rgba(201,162,39,.38),rgba(107,30,43,.58)),url(https://images.unsplash.com/photo-1548625361-58a9b86aa83b?auto=format&fit=crop&w=900&q=80)] bg-cover bg-center"></div>
+          <div class="p-5">
+            <p class="font-heading text-[10px] font-bold uppercase tracking-wider text-burgundy">Feast Day</p>
+            <h3 class="mt-2 font-display text-2xl font-semibold leading-6">Feast of Pentecost Celebrations</h3>
+            <p class="mt-2 text-sm leading-6 text-midnight/70">Join us as we celebrate the outpouring of the Holy Spirit.</p>
+            <p class="mt-7 text-xs text-midnight/60">▣ May 8, 2025</p>
+          </div>
+        </article>
+
+        <article class="card-hover overflow-hidden rounded-md border border-stone/80 bg-cream shadow-soft">
+          <div class="h-36 bg-[linear-gradient(135deg,rgba(255,253,248,.3),rgba(29,53,87,.24)),url(https://images.unsplash.com/photo-1516383607781-913a19294fd1?auto=format&fit=crop&w=900&q=80)] bg-cover bg-center"></div>
+          <div class="p-5">
+            <p class="font-heading text-[10px] font-bold uppercase tracking-wider text-burgundy">Bishop's Letters</p>
+            <h3 class="mt-2 font-display text-2xl font-semibold leading-6">A Catholic Response to Compassion</h3>
+            <p class="mt-2 text-sm leading-6 text-midnight/70">Reflections on the dignity of every human life.</p>
+            <p class="mt-7 text-xs text-midnight/60">▣ May 5, 2025</p>
+          </div>
+        </article>
+
+        <article class="card-hover overflow-hidden rounded-md border border-stone/80 bg-cream shadow-soft">
+          <div class="h-36 bg-cathedral bg-cover bg-center"></div>
+          <div class="p-5">
+            <p class="font-heading text-[10px] font-bold uppercase tracking-wider text-burgundy">Pilgrimage</p>
+            <h3 class="mt-2 font-display text-2xl font-semibold leading-6">Jubilee Pilgrimage to Rome</h3>
+            <p class="mt-2 text-sm leading-6 text-midnight/70">Pilgrimage of Hope to the Eternal City for the Jubilee Year.</p>
+            <p class="mt-7 text-xs text-midnight/60">▣ Apr 30, 2025</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EVENTS + MASS -->
+    <section class="mx-auto grid max-w-7xl gap-8 px-6 pb-10 lg:grid-cols-[.9fr_1.1fr] lg:px-8">
+      <div>
+        <div class="mb-4 flex items-center justify-between">
+          <h2 class="font-heading text-2xl font-semibold text-burgundy">Upcoming Events</h2>
+          <a href="#" class="text-xs font-semibold text-burgundy hover:text-gold">View all Events →</a>
+        </div>
+
+        <div class="overflow-hidden rounded-md border border-stone/80 bg-cream shadow-soft">
+          <div class="grid grid-cols-[70px_1fr_60px] items-center border-b border-stone/80 p-3">
+            <div class="rounded border border-stone bg-ivory p-2 text-center"><p class="text-[10px] font-bold uppercase text-burgundy">May</p><p class="font-display text-3xl font-semibold">24</p></div>
+            <div><h3 class="font-display text-xl font-semibold">Priestly Ordination</h3><p class="text-sm text-midnight/70">Cathedral of St. Aurelius · 10:00 AM</p></div>
+            <div class="text-center text-3xl text-gold">♕</div>
+          </div>
+          <div class="grid grid-cols-[70px_1fr_60px] items-center border-b border-stone/80 p-3">
+            <div class="rounded border border-stone bg-ivory p-2 text-center"><p class="text-[10px] font-bold uppercase text-burgundy">Jun</p><p class="font-display text-3xl font-semibold">06</p></div>
+            <div><h3 class="font-display text-xl font-semibold">Diocesan Youth Congress</h3><p class="text-sm text-midnight/70">St. Michael Center · All Day</p></div>
+            <div class="text-center text-3xl text-gold">♟</div>
+          </div>
+          <div class="grid grid-cols-[70px_1fr_60px] items-center border-b border-stone/80 p-3">
+            <div class="rounded border border-stone bg-ivory p-2 text-center"><p class="text-[10px] font-bold uppercase text-burgundy">Jun</p><p class="font-display text-3xl font-semibold">14</p></div>
+            <div><h3 class="font-display text-xl font-semibold">Day of Reflection for Families</h3><p class="text-sm text-midnight/70">Our Lady Retreat House · 9:00 AM</p></div>
+            <div class="text-center text-3xl text-gold">♧</div>
+          </div>
+          <div class="grid grid-cols-[70px_1fr_60px] items-center border-b border-stone/80 p-3">
+            <div class="rounded border border-stone bg-ivory p-2 text-center"><p class="text-[10px] font-bold uppercase text-burgundy">Jun</p><p class="font-display text-3xl font-semibold">21</p></div>
+            <div><h3 class="font-display text-xl font-semibold">Feast of St. Aurelius Bishop & Patron</h3><p class="text-sm text-midnight/70">Cathedral of St. Aurelius · 11:00 AM</p></div>
+            <div class="text-center text-3xl text-gold">⛪</div>
+          </div>
+          <div class="grid grid-cols-[70px_1fr_60px] items-center p-3">
+            <div class="rounded border border-stone bg-ivory p-2 text-center"><p class="text-[10px] font-bold uppercase text-burgundy">Jun</p><p class="font-display text-3xl font-semibold">05</p></div>
+            <div><h3 class="font-display text-xl font-semibold">Confirmations Celebration</h3><p class="text-sm text-midnight/70">Parishes Across the Diocese</p></div>
+            <div class="text-center text-3xl text-gold">🕊</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="mb-4 font-heading text-2xl font-semibold text-burgundy">Join Today’s Mass</h2>
+        <div class="overflow-hidden rounded-md border border-stone/80 bg-midnight shadow-soft">
+          <div class="relative h-72 bg-mass bg-cover bg-center">
+            <span class="absolute left-4 top-4 rounded bg-red-700 px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">Live</span>
+            <button class="absolute left-1/2 top-1/2 grid h-20 w-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-4 border-white bg-black/20 text-white backdrop-blur-sm hover:bg-black/35" aria-label="Play video">
+              <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 h-10 w-10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <div class="absolute bottom-0 left-0 right-0 flex items-center justify-between bg-black/75 px-4 py-2 text-xs text-white">
+              <span>▶ • LIVE</span><span>🔊 ⚙ ⛶</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 grid gap-5 md:grid-cols-2">
+          <div>
+            <h3 class="mb-3 font-heading text-lg font-semibold text-burgundy">Upcoming Broadcasts</h3>
+            <div class="grid grid-cols-[70px_1fr_90px] items-center gap-3 rounded border border-stone/80 bg-cream p-3 shadow-soft">
+              <div class="rounded border border-stone bg-ivory p-2 text-center"><p class="text-[10px] font-bold uppercase text-burgundy">May</p><p class="font-display text-3xl font-semibold">18</p></div>
+              <div><h4 class="font-semibold">Sunday Mass</h4><p class="text-xs text-midnight/65">11:00 AM<br>Cathedral of St. Aurelius</p></div>
+              <div class="h-16 rounded bg-stained bg-cover bg-center"></div>
+            </div>
+          </div>
+          <div>
+            <div class="mb-3 flex items-center justify-between"><h3 class="font-heading text-lg font-semibold text-burgundy">Archived Homilies</h3><a class="text-xs font-semibold text-burgundy" href="#">View all →</a></div>
+            <div class="grid grid-cols-[88px_1fr] items-center gap-3 rounded border border-stone/80 bg-cream p-3 shadow-soft">
+              <div class="relative h-16 rounded bg-stained bg-cover bg-center"><span class="absolute inset-0 grid place-items-center text-2xl text-white">▷</span></div>
+              <div><h4 class="font-semibold">The Good Shepherd</h4><p class="text-xs text-midnight/65">Homily by Bishop Michael Evans<br>May 11, 2025</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GIVING BAND -->
+    <section class="bg-giving bg-cover bg-center text-cream">
+      <div class="mx-auto grid max-w-7xl gap-8 px-6 py-10 lg:grid-cols-[1.4fr_repeat(4,1fr)] lg:px-8">
+        <div>
+          <h2 class="font-display text-4xl font-semibold leading-tight text-gold">Support the Mission<br />of the Church</h2>
+          <p class="mt-4 max-w-sm text-sm leading-7 text-cream/85">Your generosity helps us proclaim the Gospel, serve our neighbors, and build a better world in Christ.</p>
+        </div>
+        <div class="border-l border-gold/25 pl-6"><div class="text-4xl text-gold">♕</div><h3 class="mt-2 font-display text-xl font-semibold">Secure Online Giving</h3><p class="mt-2 text-xs leading-5 text-cream/75">Make a one-time gift or set up recurring donations.</p><a class="mt-5 inline-block rounded border border-gold px-5 py-2 text-xs font-semibold text-gold" href="#">Give Now →</a></div>
+        <div class="border-l border-gold/25 pl-6"><div class="text-4xl text-gold">⛪</div><h3 class="mt-2 font-display text-xl font-semibold">Parish Support</h3><p class="mt-2 text-xs leading-5 text-cream/75">Support your parish and local ministries.</p><a class="mt-5 inline-block rounded border border-gold px-5 py-2 text-xs font-semibold text-gold" href="#">Give Now →</a></div>
+        <div class="border-l border-gold/25 pl-6"><div class="text-4xl text-gold">♜</div><h3 class="mt-2 font-display text-xl font-semibold">Seminary Fund</h3><p class="mt-2 text-xs leading-5 text-cream/75">Forming the next generation of holy priests.</p><a class="mt-5 inline-block rounded border border-gold px-5 py-2 text-xs font-semibold text-gold" href="#">Give Now →</a></div>
+        <div class="border-l border-gold/25 pl-6"><div class="text-4xl text-gold">✥</div><h3 class="mt-2 font-display text-xl font-semibold">Charity Appeals</h3><p class="mt-2 text-xs leading-5 text-cream/75">Help the poor, the sick, and those in need.</p><a class="mt-5 inline-block rounded border border-gold px-5 py-2 text-xs font-semibold text-gold" href="#">Give Now →</a></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#07192B] text-cream">
+    <div class="mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-[1.4fr_repeat(5,1fr)] lg:px-8">
+      <div>
+        <div class="flex items-center gap-3">
+          <div class="grid h-14 w-14 place-items-center rounded-full border border-gold/50 bg-burgundy text-gold">✝</div>
+          <div><p class="font-heading text-[11px] uppercase tracking-[.22em] text-gold">Diocese of</p><p class="font-heading text-2xl">St. Aurelius</p></div>
+        </div>
+        <p class="mt-6 text-sm leading-7 text-cream/75">1234 Cathedral Drive<br>San Aurelius, ST 12345<br>(123) 456-7890<br>info@saurelius.org</p>
+      </div>
+
+      <div class="border-l border-cream/12 pl-8"><h4 class="font-heading text-sm font-semibold uppercase tracking-wide text-gold">Quick Links</h4><ul class="mt-4 space-y-2 text-sm text-cream/75"><li>About the Diocese</li><li>Bishop's Office</li><li>Parishes</li><li>Ministries</li><li>News</li><li>Events</li><li>Contact Us</li></ul></div>
+      <div class="border-l border-cream/12 pl-8"><h4 class="font-heading text-sm font-semibold uppercase tracking-wide text-gold">Vatican Links</h4><ul class="mt-4 space-y-2 text-sm text-cream/75"><li>Vatican.va</li><li>Holy See Press Office</li><li>Vatican News</li><li>Liturgy & Sacraments</li><li>Catholic Education</li><li>Prayers & Devotions</li></ul></div>
+      <div class="border-l border-cream/12 pl-8"><h4 class="font-heading text-sm font-semibold uppercase tracking-wide text-gold">Office Directory</h4><ul class="mt-4 space-y-2 text-sm text-cream/75"><li>Pastoral Center</li><li>Bishop's Office</li><li>Chancery</li><li>Faith Formation</li><li>Communications</li><li>Human Resources</li></ul></div>
+      <div class="border-l border-cream/12 pl-8"><h4 class="font-heading text-sm font-semibold uppercase tracking-wide text-gold">Mass Schedules</h4><ul class="mt-4 space-y-2 text-sm text-cream/75"><li>View Mass Times</li><li>Eucharistic Adoration</li><li>Confession Times</li><li>Holy Days</li><li>Livestream Mass</li></ul></div>
+      <div class="border-l border-cream/12 pl-8"><h4 class="font-heading text-sm font-semibold uppercase tracking-wide text-gold">Stay Connected</h4><div class="mt-5 flex gap-3 text-2xl text-gold"><span>●</span><span>◎</span><span>▶</span><span>𝕏</span></div><a href="#" class="mt-8 inline-block w-full rounded border border-gold px-5 py-3 text-center text-sm font-semibold text-gold hover:bg-gold hover:text-midnight">Subscribe to eNews</a></div>
+    </div>
+
+    <div class="mx-auto max-w-7xl border-t border-cream/15 px-6 py-6 lg:px-8">
+      <div class="grid items-center gap-4 text-sm text-cream/70 md:grid-cols-3">
+        <p>© 2025 Diocese of St. Aurelius. All rights reserved.</p>
+        <p class="text-center text-2xl text-gold">✝</p>
+        <p class="text-right">Privacy Policy <span class="mx-4">|</span> Terms of Use</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
